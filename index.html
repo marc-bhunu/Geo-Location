@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Location API</title>
+</head>
+<body>
+
+
+    <script>
+            //success callback 
+            const successCallback = (position) => {
+                    console.log(position);
+                }
+
+            //sendening an error callback
+            const errorCallback = (error) => {
+                console.log(error);
+                }
+
+            //getting the ussers current position
+            function idCurrentPosition() {
+
+                const idCurrentPosition = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                
+            }
+            // idCurrentPosition();
+
+            
+            //getting the current position of the users location as it changes
+                function watchPosition() {
+                     const idWatch = navigator.geolocation.watchPosition(successCallback, errorCallback);
+                    //Clears watch from  conole , stops watching
+                    //navigator.geolocation.clearWatch(idWatch);  
+                }
+                //watchPosition();
+           
+           
+            //find  current location , with properties, more accurately 
+                function accurateCurrentPosition() {
+                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
+                        enableHighAccuracy: true,
+                        timeout: 5000
+                    })
+                }
+              //  accurateCurrentPosition();
+    </script>
+</body>
+</html>
